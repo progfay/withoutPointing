@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default ({title}) => (
+export default ({ title }) => (
   <React.Fragment>
     <Head>
         <title>{title}</title>
