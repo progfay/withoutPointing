@@ -11,6 +11,10 @@ export default () => (
             left='/portfolio'
             right='/about'
         >
+            <TopSlideLink icon='fa-address-book' />
+            <BottomSlideLink icon='fa-home'/>
+            <LeftSlideLink icon='fa-user' />
+            <RightSlideLink icon='fa-info-circle' />
         </WithPanGesture>
     </React.Fragment>
 );
