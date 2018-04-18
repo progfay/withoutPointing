@@ -1,8 +1,14 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faAngleDoubleUp from '@fortawesome/fontawesome-free-solid/faAngleDoubleUp'
+import faAngleDoubleDown from '@fortawesome/fontawesome-free-solid/faAngleDoubleDown'
+import faAngleDoubleLeft from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft'
+import faAngleDoubleRight from '@fortawesome/fontawesome-free-solid/faAngleDoubleRight'
+
 const TopSlideLink = ({ icon }) => (
   <React.Fragment>
     <div className='top-slide-link'>
-      <i className='fas fa-angle-double-up' />
-      <i className={`fas ${icon}`} />
+        <FontAwesomeIcon icon={faAngleDoubleUp} />
+        <FontAwesomeIcon icon={icon} />
     </div>
     <style jsx>{`
       .top-slide-link {
@@ -23,8 +29,8 @@ const TopSlideLink = ({ icon }) => (
 const BottomSlideLink = ({ icon }) => (
   <React.Fragment>
     <div className='bottom-slide-link'>
-      <i className='fas fa-angle-double-down' />
-      <i className={`fas ${icon}`} />
+      <FontAwesomeIcon icon={faAngleDoubleDown} />
+      <FontAwesomeIcon icon={icon} />
     </div>
     <style jsx>{`
       .bottom-slide-link {
@@ -45,8 +51,8 @@ const BottomSlideLink = ({ icon }) => (
 const LeftSlideLink = ({ icon }) => (
   <React.Fragment>
     <div className='left-slide-link'>
-      <i className='fas fa-angle-double-left' />
-      <i className={`fas ${icon}`} />
+      <FontAwesomeIcon icon={faAngleDoubleLeft} />
+      <FontAwesomeIcon icon={icon} />
     </div>
     <style jsx>{`
       .left-slide-link {
@@ -64,11 +70,11 @@ const LeftSlideLink = ({ icon }) => (
   </React.Fragment>
 );
 
-const RightSlideLink = ({ icon }) => (
+const RightSlideLink = ({ type, icon }) => (
   <React.Fragment>
     <div className='right-slide-link'>
-      <i className='fas fa-angle-double-right' />
-      <i className={`fas ${icon}`} />
+      <FontAwesomeIcon icon={faAngleDoubleRight} />
+      <FontAwesomeIcon icon={icon} />
     </div>
     <style jsx>{`
       .right-slide-link {
@@ -85,6 +91,5 @@ const RightSlideLink = ({ icon }) => (
     `}</style>
   </React.Fragment>
 );
-
 
 export { TopSlideLink, BottomSlideLink, LeftSlideLink, RightSlideLink };
