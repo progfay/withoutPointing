@@ -7,16 +7,16 @@ export default withRouter(
       <Hammer direction='DIRECTION_ALL' onSwipe={(e) => {
         switch(e.direction) {
           case 16:
-            router.push(up);
+            router.replace(up);
             break;
           case 8:
-            router.push(down);
+            router.replace(down);
             break;
           case 4:
-            router.push(left);
+            router.replace(left);
             break;
           case 2:
-            router.push(right);
+            router.replace(right);
             break;
         }
       }}>
@@ -31,6 +31,7 @@ export default withRouter(
           left: 0;
           width: 100vw;
           height: 100vh;
+          z-index: 1;
         }
       `}</style>
     </React.Fragment>
