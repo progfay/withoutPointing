@@ -1,26 +1,24 @@
-import HeadWithoutScroll from '../components/headWithoutScroll';
-import Content from '../components/content';
+import HeadWithoutScroll from '../../components/headWithoutScroll';
+import Content from '../../components/content';
 
 import FontAwesomeIcon    from '@fortawesome/react-fontawesome'
 import faAngleDoubleUp    from '@fortawesome/fontawesome-free-solid/faAngleDoubleUp'
 import faAngleDoubleDown  from '@fortawesome/fontawesome-free-solid/faAngleDoubleDown'
 import faAngleDoubleLeft  from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft'
 import faAngleDoubleRight from '@fortawesome/fontawesome-free-solid/faAngleDoubleRight'
-import faAddressBook      from '@fortawesome/fontawesome-free-solid/faAddressBook';
-import faUser             from '@fortawesome/fontawesome-free-solid/faUser';
 import faInfoCircle       from '@fortawesome/fontawesome-free-solid/faInfoCircle';
-import faHome             from '@fortawesome/fontawesome-free-solid/faHome';
+import faUser             from '@fortawesome/fontawesome-free-solid/faUser';
 
 export default () => (
     <React.Fragment>
         <HeadWithoutScroll title="about"/>
         <Content
             up={{
-                link: '/contact',
+                link: '/about',
                 section: (
                     <React.Fragment>
                         <FontAwesomeIcon icon={faAngleDoubleUp} />
-                        <FontAwesomeIcon icon={faAddressBook} />
+                        <FontAwesomeIcon icon={faInfoCircle} />
                     </React.Fragment>
                 )
             }}
@@ -34,26 +32,24 @@ export default () => (
                 )
             }}
             left={{
-                link: '/about',
+                link: '/portfolio/1',
                 section: (
                     <React.Fragment>
-                        <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                        <FontAwesomeIcon icon={faInfoCircle} />
+                        <FontAwesomeIcon icon={faAngleDoubleLeft} style={{ fontSize: '45px' }} />
                     </React.Fragment>
                 )
             }}
             right={{
-                link: '/contact',
+                link: '/portfolio/3',
                 section: (
                     <React.Fragment>
-                        <FontAwesomeIcon icon={faAngleDoubleRight} />
-                        <FontAwesomeIcon icon={faHome} />
+                        <FontAwesomeIcon icon={faAngleDoubleRight} style={{ fontSize: '45px' }} />
                     </React.Fragment>
                 )
             }}
             >
-            <h1>About</h1>
-            <p>Hi, here is "about" page.</p>
+            <h1>Second</h1>
+            <p> {"It's second page of portfolio."} </p>
         </Content>
     </React.Fragment>
 );
