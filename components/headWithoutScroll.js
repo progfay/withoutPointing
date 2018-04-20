@@ -27,25 +27,3 @@ export default ({ title }) => (
     `}</style>
   </React.Fragment>
 );
-
-// let lastTouchEnd = 0;
-
-// export const startZoomLock = (target) => {
-//   target.addEventListener(
-//     'touchmove',
-//     (event) => { event.preventDefault() },
-//     false
-//   );
-
-//   target.addEventListener(
-//     'touchstart',
-//     (event) => { if (event.touches.length > 1) event.preventDefault() },
-//     false
-//   );
-
-//   target.addEventListener(
-//     'touchend',
-//     event => { if (- lastTouchEnd + (lastTouchEnd = new Date().getTime()) <= 500) event.preventDefault() },
-//     false
-//   );
-// };
