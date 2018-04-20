@@ -4,10 +4,10 @@ import { TopSlideLink, BottomSlideLink, LeftSlideLink, RightSlideLink } from '..
 export default ({ up, down, left, right, children }) => (
     <React.Fragment>
       <WithPanGesture up={up.link} down={down.link} left={left.link} right={right.link}>
-        <TopSlideLink icon={up.icon} />
-        <BottomSlideLink icon={down.icon} />
-        <LeftSlideLink icon={left.icon} />
-        <RightSlideLink icon={right.icon} />
+        <TopSlideLink> {up.section} </TopSlideLink>
+        <BottomSlideLink> {down.section} </BottomSlideLink>
+        <LeftSlideLink> {left.section} </LeftSlideLink>
+        <RightSlideLink> {right.section} </RightSlideLink>
         <div className='content-outer'>
           <div className="content-inner">
             {children}

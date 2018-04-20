@@ -1,14 +1,7 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faAngleDoubleUp from '@fortawesome/fontawesome-free-solid/faAngleDoubleUp'
-import faAngleDoubleDown from '@fortawesome/fontawesome-free-solid/faAngleDoubleDown'
-import faAngleDoubleLeft from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft'
-import faAngleDoubleRight from '@fortawesome/fontawesome-free-solid/faAngleDoubleRight'
-
-const TopSlideLink = ({ icon }) => (
+const TopSlideLink = ({ children }) => (
   <React.Fragment>
     <div className='top-slide-link'>
-        <FontAwesomeIcon icon={faAngleDoubleUp} />
-        <FontAwesomeIcon icon={icon} />
+        {children}
     </div>
     <style jsx>{`
       .top-slide-link {
@@ -26,11 +19,10 @@ const TopSlideLink = ({ icon }) => (
   </React.Fragment>
 );
 
-const BottomSlideLink = ({ icon }) => (
+const BottomSlideLink = ({ children }) => (
   <React.Fragment>
     <div className='bottom-slide-link'>
-      <FontAwesomeIcon icon={faAngleDoubleDown} />
-      <FontAwesomeIcon icon={icon} />
+      {children}
     </div>
     <style jsx>{`
       .bottom-slide-link {
@@ -48,11 +40,10 @@ const BottomSlideLink = ({ icon }) => (
   </React.Fragment>
 );
 
-const LeftSlideLink = ({ icon }) => (
+const LeftSlideLink = ({ children }) => (
   <React.Fragment>
     <div className='left-slide-link'>
-      <FontAwesomeIcon icon={faAngleDoubleLeft} />
-      <FontAwesomeIcon icon={icon} />
+      {children}
     </div>
     <style jsx>{`
       .left-slide-link {
@@ -70,11 +61,10 @@ const LeftSlideLink = ({ icon }) => (
   </React.Fragment>
 );
 
-const RightSlideLink = ({ type, icon }) => (
+const RightSlideLink = ({ children }) => (
   <React.Fragment>
     <div className='right-slide-link'>
-      <FontAwesomeIcon icon={faAngleDoubleRight} />
-      <FontAwesomeIcon icon={icon} />
+      {children}
     </div>
     <style jsx>{`
       .right-slide-link {
