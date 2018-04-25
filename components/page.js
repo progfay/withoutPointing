@@ -12,14 +12,14 @@ export default ({ pageInfo, top, bottom, left, right }) => (
             </ContentStyle.Inner>
         </ContentStyle.Outer>
         <GestureDetector
-            top={topPage}
-            bottom={bottomPage}
-            left={leftPage}
-            right={rightPage}
+            top={top}
+            bottom={bottom}
+            left={left}
+            right={right}
             bgColor={pageInfo.bgColor} />
-        <TopSlideLink    icon={topPage.icon} />
-        <BottomSlideLink icon={bottomPage.icon} />
-        <LeftSlideLink   icon={leftPage.icon} />
-        <RightSlideLink  icon={rightPage.icon} />
+        <TopSlideLink    icon={top.icon} />
+        <BottomSlideLink icon={bottom.icon} />
+        <LeftSlideLink   icon={left.icon} />
+        <RightSlideLink  icon={right.icon} />
     </React.Fragment>
 );
