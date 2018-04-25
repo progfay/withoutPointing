@@ -9,28 +9,28 @@ import faAngleDoubleRight from '@fortawesome/fontawesome-free-solid/faAngleDoubl
 const TopSlideLink = ({ icon }) => (
   <SlideStyle.Top>
     <FontAwesomeIcon icon={faAngleDoubleUp} />
-    <FontAwesomeIcon icon={icon} />
+    {icon != null ? (<FontAwesomeIcon icon={icon} />) : null}
   </SlideStyle.Top>
 );
 
 const BottomSlideLink = ({ icon }) => (
   <SlideStyle.Bottom>
     <FontAwesomeIcon icon={faAngleDoubleDown} />
-    <FontAwesomeIcon icon={icon} />
+    {icon != null ? (<FontAwesomeIcon icon={icon} />) : null}
   </SlideStyle.Bottom>
 );
 
 const LeftSlideLink = ({ icon }) => (
   <SlideStyle.Left>
     <FontAwesomeIcon icon={faAngleDoubleLeft} />
-    <FontAwesomeIcon icon={icon} />
+    {icon != null ? (<FontAwesomeIcon icon={icon} />) : null}
   </SlideStyle.Left>
 );
 
 const RightSlideLink  = ({ icon }) => (
   <SlideStyle.Right>
     <FontAwesomeIcon icon={faAngleDoubleRight} />
-    <FontAwesomeIcon icon={icon} />
+    {icon != null ? (<FontAwesomeIcon icon={icon} />) : null}
   </SlideStyle.Right>
 );
 
