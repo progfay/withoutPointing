@@ -10,6 +10,8 @@ const DOWN  =  8;
 const LEFT  =  4;
 const RIGHT =  2;
 
+const THRESHOLD_PER_LENGTH = 0.7;
+
 const colorLerp = (start, stop, amt) => {
   let r = new RegExp(".{1,2}","g");
   const startColor = start.slice(1).match(r).map(hex => parseInt(hex, 16));
@@ -35,37 +37,19 @@ class GestureDetector extends React.Component {
     { direction, start, current } = this.state
   ) => (
     <React.Fragment>
-        <Hammer
+        <Hammer vertical={true}
         onPanStart={(e) => {this.setState({ direction: e.direction, start: e.center }); console.log(1234)}}
-        onPan={(e) => {
-          this.setState({ current: e.center });
-          // switch(direction) {
-          // case UP:
-          //   this.setState({ distance: distance - e.overallVelocityY * 500 });
-          //   break;
-          // case DOWN:
-          //   this.setState({ distance: distance + e.overallVelocityY * 500 });
-          //   break;
-          // case LEFT:
-          //   this.setState({ distance: distance + e.overallVelocityX * 500 });
-          //   break;
-          // case RIGHT:
-          //   this.setState({ distance: distance - e.overallVelocityX * 500 });
-          //   break;
-          // }
-          // console.log(this.state.distance);
-        }}
+        onPan={(e) => { this.setState({ current: e.center }) }}
         onPanEnd={(e) => {
           console.log(1234);
           if(!(start && current)) return;
-          const threshold = ((direction == LEFT || direction == RIGHT) ? (windowWidth) : (windowHeight)) * 0.8;
+          const threshold = ((direction == LEFT || direction == RIGHT) ? (windowWidth) : (windowHeight)) * THRESHOLD_PER_LENGTH;
           const distance = (
             direction == UP    ? (current.y - start.y) :
             direction == DOWN  ? (start.y - current.y) :
             direction == LEFT  ? (current.y - start.x) :
             direction == RIGHT ? (start.x - current.x) : 0
           );
-          console.log(distance + ' ' + threshold);
           if (direction == 0 || distance < threshold) {
             this.setState({ direction: 0, start: null, current: null });
             return;
@@ -110,7 +94,7 @@ class GestureDetector extends React.Component {
                 direction == DOWN  ? (start.y - current.y) :
                 direction == LEFT  ? (current.y - start.x) :
                 direction == RIGHT ? (start.x - current.x) : 0
-              ) / ((direction == LEFT || direction == RIGHT) ? (windowWidth) * 0.8 : (windowHeight) * 0.8)
+              ) / ((direction == LEFT || direction == RIGHT) ? (windowWidth) * THRESHOLD_PER_LENGTH : (windowHeight) * THRESHOLD_PER_LENGTH)
             ) : bgColor
           }}>
         </div>
