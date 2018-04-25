@@ -1,55 +1,32 @@
-import HeadWithoutScroll from '../../components/headWithoutScroll';
-import Content from '../../components/content';
+import Page from '../../components/page';
 
-import FontAwesomeIcon    from '@fortawesome/react-fontawesome'
-import faAngleDoubleUp    from '@fortawesome/fontawesome-free-solid/faAngleDoubleUp'
-import faAngleDoubleDown  from '@fortawesome/fontawesome-free-solid/faAngleDoubleDown'
-import faAngleDoubleLeft  from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft'
-import faAngleDoubleRight from '@fortawesome/fontawesome-free-solid/faAngleDoubleRight'
-import faInfoCircle       from '@fortawesome/fontawesome-free-solid/faInfoCircle';
-import faUser             from '@fortawesome/fontawesome-free-solid/faUser';
+import { pageInfo as topPage }    from '../about';
+import { pageInfo as bottomPage } from './index';
+import { pageInfo as leftPage }   from './index';
+import { pageInfo as rightPage }  from './2';
+
+import icon from '@fortawesome/fontawesome-free-solid/faUser';
+
+const pageInfo = {
+        title: 'portfolio',
+        icon: null,
+        bgColor: '#0040FF',
+        link: '/portfolio/1',
+        children: (
+            <React.Fragment>
+                <h1>First</h1>
+                <p> {"It's first page of portfolio."} </p>
+            </React.Fragment>
+        )
+};
 
 export default () => (
-    <React.Fragment>
-        <HeadWithoutScroll title="about"/>
-        <Content
-            up={{
-                link: '/about',
-                section: (
-                    <React.Fragment>
-                        <FontAwesomeIcon icon={faAngleDoubleUp} />
-                        <FontAwesomeIcon icon={faInfoCircle} />
-                    </React.Fragment>
-                )
-            }}
-            down={{
-                link: '/portfolio',
-                section: (
-                    <React.Fragment>
-                        <FontAwesomeIcon icon={faAngleDoubleDown} />
-                        <FontAwesomeIcon icon={faUser} />
-                    </React.Fragment>
-                )
-            }}
-            left={{
-                link: '/portfolio',
-                section: (
-                    <React.Fragment>
-                        <FontAwesomeIcon icon={faAngleDoubleLeft} style={{ fontSize: '45px' }} />
-                    </React.Fragment>
-                )
-            }}
-            right={{
-                link: '/portfolio/2',
-                section: (
-                    <React.Fragment>
-                        <FontAwesomeIcon icon={faAngleDoubleRight} style={{ fontSize: '45px' }} />
-                    </React.Fragment>
-                )
-            }}
-            >
-            <h1>First</h1>
-            <p> {"It's first page of portfolio."} </p>
-        </Content>
-    </React.Fragment>
+    <Page
+        pageInfo={pageInfo}
+        top={topPage}
+        bottom={bottomPage}
+        left={leftPage}
+        right={rightPage}
+        />
 );
+export { pageInfo };
