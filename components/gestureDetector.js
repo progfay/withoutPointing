@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { withRouter } from 'next/router';
 import Hammer from 'react-hammerjs';
@@ -28,21 +27,19 @@ class GestureDetector extends React.Component {
     this.state= {
       direction: 0,
       start    : null,
-      current  : null,
       distance : 0
     };
   }
 
   render = (
     { top, bottom, left, right, bgColor, router, windowWidth, windowHeight } = this.props,
-    { direction, start, current, distance } = this.state
+    { direction, start, distance } = this.state
   ) => (
     <React.Fragment>
         <Hammer vertical={true}
         onPanStart={(e) => {this.setState({ direction: e.direction, start: e.center }); console.log(1234)}}
         onPan={(e) => {
           this.setState({
-            current: e.center,
             distance: (
               direction == UP   || direction == DOWN  ? (e.center.y - start.y) :
               direction == LEFT || direction == RIGHT ? (e.center.x - start.x) : 0
@@ -50,14 +47,14 @@ class GestureDetector extends React.Component {
           })
         }}
         onPanEnd={(e) => {
-          if(!(start && current)) return;
+          if(!start) return;
           const threshold = ((direction == LEFT || direction == RIGHT) ? (windowWidth) : (windowHeight)) * THRESHOLD_PER_LENGTH;
           const distance = (
-            direction == UP   || direction == DOWN  ? (current.y - start.y) :
-            direction == LEFT || direction == RIGHT ? (current.x - start.x) : 0
+            direction == UP   || direction == DOWN  ? (e.center.y - start.y) :
+            direction == LEFT || direction == RIGHT ? (e.center.x - start.x) : 0
           );
           if (direction == 0 || Math.abs(distance) < threshold) {
-            this.setState({ direction: 0, start: null, current: null });
+            this.setState({ direction: 0, start: null });
             return;
           }
           switch(direction) {
@@ -90,8 +87,7 @@ class GestureDetector extends React.Component {
           width: '100vw',
           height: '100vh',
           zIndex: -1,
-          backgroundColor: start && current ?
-            colorLerp(
+          backgroundColor: start ? colorLerp(
               bgColor,
               (
                 direction == UP   || direction == DOWN  ? (distance > 0 ? top.bgColor  : bottom.bgColor) :
