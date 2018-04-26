@@ -57,6 +57,7 @@ class GestureDetector extends React.Component {
             this.setState({ direction: 0, start: null });
             return;
           }
+          this.setState({ distance: threshold });
           switch(direction) {
             case 16:
             case 8:
@@ -93,7 +94,7 @@ class GestureDetector extends React.Component {
                 direction == UP   || direction == DOWN  ? (distance > 0 ? top.bgColor  : bottom.bgColor) :
                 direction == LEFT || direction == RIGHT ? (distance > 0 ? left.bgColor : right.bgColor)  : bgColor
               ),
-              Math.abs(distance) / ((direction == LEFT || direction == RIGHT ? windowWidth : windowHeight) * THRESHOLD_PER_LENGTH)
+              Math.min(Math.abs(distance) / ((direction == LEFT || direction == RIGHT ? windowWidth : windowHeight) * THRESHOLD_PER_LENGTH), 1)
             ) : bgColor
           }}>
         </div>
