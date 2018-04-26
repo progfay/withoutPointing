@@ -10,7 +10,7 @@ import icon from '@fortawesome/fontawesome-free-solid/faInfoCircle';
 const pageInfo = {
         title: 'about',
         icon: icon,
-        bgColor: '#FF0000',
+        bgColor: '#FFFFFF',
         link: '/about',
         children: (
             <React.Fragment>

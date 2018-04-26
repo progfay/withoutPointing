@@ -10,7 +10,7 @@ import icon from '@fortawesome/fontawesome-free-solid/faUser';
 const pageInfo = {
         title: 'portfolio',
         icon: null,
-        bgColor: '#00C0FF',
+        bgColor: '#00CCCC',
         link: '/portfolio/3',
         children: (
             <React.Fragment>

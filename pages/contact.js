@@ -7,12 +7,12 @@ import icon from '@fortawesome/fontawesome-free-solid/faAddressBook';
 const pageInfo = {
         title: 'contact',
         icon: icon,
-        bgColor: '#00FF00',
+        bgColor: '#FFFFCC',
         link: '/contact',
         children: (
             <React.Fragment>
-                <h1>Content</h1>
-                <p>Hi, here is "content" page.</p>
+                <h1>Contant</h1>
+                <p>Hi, here is "contant" page.</p>
             </React.Fragment>
         )
 };
