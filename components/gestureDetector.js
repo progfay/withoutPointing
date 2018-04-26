@@ -9,7 +9,7 @@ const DOWN  =  8;
 const LEFT  =  4;
 const RIGHT =  2;
 
-const THRESHOLD_PER_LENGTH = 0.7;
+const THRESHOLD_PER_LENGTH = 0.55;
 
 const colorLerp = (start, stop, amt) => {
   let r = new RegExp(".{1,2}","g");
