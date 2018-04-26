@@ -29,7 +29,18 @@ class GestureDetector extends React.Component {
       start    : null,
       distance : 0
     };
+    this.lerpBackColor = this.lerpBackColor.bind(this);
   }
+
+  lerpBackColor = () => { setTimeout(() => {
+    const updatedDistance = this.state.distance * 0.85;
+    if (Math.abs(updatedDistance) > 10) {
+      this.setState({ distance: updatedDistance });
+      this.lerpBackColor();
+    } else {
+      this.setState({ direction: 0, start: null, distance: 0 });
+    }
+  }, 20) };
 
   render = (
     { top, bottom, left, right, bgColor, router, windowWidth, windowHeight } = this.props,
@@ -37,7 +48,7 @@ class GestureDetector extends React.Component {
   ) => (
     <React.Fragment>
         <Hammer vertical={true}
-        onPanStart={(e) => {this.setState({ direction: e.direction, start: e.center }); console.log(1234)}}
+        onPanStart={(e) => {this.setState({ direction: e.direction, start: e.center }) }}
         onPan={(e) => {
           this.setState({
             distance: (
@@ -54,7 +65,8 @@ class GestureDetector extends React.Component {
             direction == LEFT || direction == RIGHT ? (e.center.x - start.x) : 0
           );
           if (direction == 0 || Math.abs(distance) < threshold) {
-            this.setState({ direction: 0, start: null });
+            console.log(distance);
+            this.lerpBackColor();
             return;
           }
           this.setState({ distance: threshold });
