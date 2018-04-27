@@ -17,7 +17,7 @@ Please open this URL on your smartphone : [https://withoutpointing.now.sh](https
 2. copy above code and paste to touched file
 3. change the part surrounded by `${ }`
 
-```react
+```javascript
 import Page from '../components/page';
 
 import { pageInfo as topPage }    from './${top page path}';
