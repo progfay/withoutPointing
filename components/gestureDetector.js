@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import Hammer from 'react-hammerjs';
-import DetectorStyle from '../style/detectorStyle';
 import windowSize from 'react-window-size';
 
 const VERTICAL   = 1;
@@ -79,7 +78,15 @@ class GestureDetector extends React.Component {
           }
         }}>
           <div>
-            <DetectorStyle />
+            <div className='detactor' />
+            <style jsx>{`
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              z-index: 100;
+            `}</style>
           </div>
         </Hammer>
         <div style={{
