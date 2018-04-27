@@ -14,7 +14,7 @@ Please open this URL on your smartphone : [https://withoutpointing.now.sh](https
 ### Add new page
 
 1. touch new `.js` file for `/pages`
-2. copy above code and paste to touched file
+2. copy below code and paste to touched file
 3. change the part surrounded by `${ }`
 
 ```javascript
