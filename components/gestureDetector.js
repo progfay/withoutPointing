@@ -4,10 +4,8 @@ import Hammer from 'react-hammerjs';
 import DetectorStyle from '../style/detectorStyle';
 import windowSize from 'react-window-size';
 
-const UP    = 16;
-const DOWN  =  8;
-const LEFT  =  4;
-const RIGHT =  2;
+const VERTICAL   = 1;
+const HORIZONTAL = 2;
 
 const THRESHOLD_PER_LENGTH = 0.55;
 
@@ -48,45 +46,36 @@ class GestureDetector extends React.Component {
   ) => (
     <React.Fragment>
         <Hammer direction={'DIRECTION_ALL'}
-        onPanStart={(e) => {this.setState({ direction: e.direction, start: e.center }) }}
+        onPanStart={(e) => {
+          this.setState({
+            direction: e.direction == 16 || e.direction == 8 ? VERTICAL : HORIZONTAL,
+            start: e.center
+          })
+        }}
         onPan={(e) => {
           this.setState({
             distance: (
-              direction == UP   || direction == DOWN  ? (e.center.y - start.y) :
-              direction == LEFT || direction == RIGHT ? (e.center.x - start.x) : 0
+              direction == VERTICAL   ? (e.center.y - start.y) :
+              direction == HORIZONTAL ? (e.center.x - start.x) : 0
             )
           })
         }}
         onPanEnd={(e) => {
           if(!start) return;
-          const threshold = ((direction == LEFT || direction == RIGHT) ? (windowWidth) : (windowHeight)) * THRESHOLD_PER_LENGTH;
+          const threshold = (direction == HORIZONTAL ? (windowWidth) : (windowHeight)) * THRESHOLD_PER_LENGTH;
           const distance = (
-            direction == UP   || direction == DOWN  ? (e.center.y - start.y) :
-            direction == LEFT || direction == RIGHT ? (e.center.x - start.x) : 0
+            direction == VERTICAL   ? (e.center.y - start.y) :
+            direction == HORIZONTAL ? (e.center.x - start.x) : 0
           );
-          if (direction == 0 || Math.abs(distance) < threshold) {
-            console.log(distance);
+          if (!direction || Math.abs(distance) < threshold) {
             this.lerpBackColor();
             return;
           }
           this.setState({ distance: threshold });
-          switch(direction) {
-            case 16:
-            case 8:
-              if (distance > 0) {
-                router.replace(top.link);
-              } else {
-                router.replace(bottom.link);
-              }
-              break;
-            case 4:
-            case 2:
-              if (distance > 0) {
-                router.replace(left.link);
-              } else {
-                router.replace(right.link);
-              }
-              break;
+          if (direction == VERTICAL) {
+              router.replace(distance > 0 ? top.link  : bottom.link);
+          } else { // horizontal
+              router.replace(distance > 0 ? left.link : right.link);
           }
         }}>
           <div>
@@ -103,10 +92,10 @@ class GestureDetector extends React.Component {
           backgroundColor: start ? colorLerp(
               bgColor,
               (
-                direction == UP   || direction == DOWN  ? (distance > 0 ? top.bgColor  : bottom.bgColor) :
-                direction == LEFT || direction == RIGHT ? (distance > 0 ? left.bgColor : right.bgColor)  : bgColor
+                direction == VERTICAL   ? (distance > 0 ? top.bgColor  : bottom.bgColor) :
+                direction == HORIZONTAL ? (distance > 0 ? left.bgColor : right.bgColor)  : bgColor
               ),
-              Math.min(Math.abs(distance) / ((direction == LEFT || direction == RIGHT ? windowWidth : windowHeight) * THRESHOLD_PER_LENGTH), 1)
+              Math.min(Math.abs(distance) / ((direction == HORIZONTAL ? windowWidth : windowHeight) * THRESHOLD_PER_LENGTH), 1)
             ) : bgColor
           }}>
         </div>
