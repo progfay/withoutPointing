@@ -47,7 +47,7 @@ class GestureDetector extends React.Component {
     { direction, start, distance } = this.state
   ) => (
     <React.Fragment>
-        <Hammer vertical={true}
+        <Hammer direction={'DIRECTION_ALL'}
         onPanStart={(e) => {this.setState({ direction: e.direction, start: e.center }) }}
         onPan={(e) => {
           this.setState({
