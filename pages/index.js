@@ -5,5 +5,9 @@ export default class extends React.Component {
     window.location = ('googlechrome://withoutpointing.now.sh/about');
   }
 
-  render = () => ( <div /> )
+  render = () => (
+  <div>
+    <h2>Please use Google Chrome app on your smartphone if A new tab could not be opened.</h2>
+  </div>
+)
 }
